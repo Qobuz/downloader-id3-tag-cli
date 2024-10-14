@@ -11,7 +11,7 @@ function build_taglib {
     echo "Building TagLib"
     
     if [ ! -d "taglib" ]; then
-        git clone -b v1.13.1 --single-branch --depth 1 https://github.com/taglib/taglib.git
+        git clone -b v2.0.2 --single-branch --depth 1 https://github.com/taglib/taglib.git
     fi
 
     pushd taglib

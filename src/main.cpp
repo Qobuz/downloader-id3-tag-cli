@@ -13,6 +13,7 @@ TAGLIB_HEADERS_BEGIN
   #include <taglib/asftag.h>
   #include <taglib/id3v2tag.h>
   #include <taglib/id3v2frame.h>
+  #include <taglib/attachedpictureframe.h>
   #include <taglib/mp4tag.h>
   #include <taglib/xiphcomment.h>
   #include "tagunion.h"
@@ -347,8 +348,9 @@ bool process_file(arguments&& args)
     {
         TagLib::AudioProperties *properties = file.audioProperties();
 
-        int seconds = properties->length() % 60;
-        int minutes = (properties->length() - seconds) / 60;
+        int duration = properties->lengthInMilliseconds() / 1000;
+        int seconds = duration % 60;
+        int minutes = (duration - seconds) / 60;
 
         std::cout << "-- AUDIO --" << std::endl;
         std::cout << "bitrate     - " << properties->bitrate() << std::endl;

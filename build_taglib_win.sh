@@ -12,6 +12,9 @@ function build_taglib {
 
     if [ ! -d "taglib" ]; then
         git clone -b v2.0.2 --single-branch --depth 1 https://github.com/taglib/taglib.git
+        pushd taglib
+            git submodule update --init
+        popd
     fi
 
     pushd taglib
